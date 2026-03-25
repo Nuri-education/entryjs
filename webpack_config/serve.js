@@ -39,6 +39,17 @@ module.exports = {
         devMiddleware: {
             publicPath: '/',
         },
+        client: {
+            // 외부 CDN 스크립트의 cross-origin "Script error." 가 오버레이를 덮지 않도록
+            overlay: {
+                errors: true,
+                warnings: false,
+                runtimeErrors: (error) => {
+                    if (error && error.message === 'Script error.') return false;
+                    return true;
+                },
+            },
+        },
         proxy: {
             '/lib/entry-js': {
                 target: `http://localhost:${devServerPort}`,

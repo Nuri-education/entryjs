@@ -158,3 +158,7 @@ require('./textcoding/util/textCodingUtil');
 
 window.Entry = Entry;
 showConsoleBanner();
+
+require('./message-handler');
+require('./auto-save');
+require('./workspace-ready');
